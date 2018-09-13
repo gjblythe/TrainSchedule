@@ -1,5 +1,22 @@
-/* body {
-    background-image: url(/../assets/images/Train.jpeg);
-    size: 100%;
+.jumbotron {
+    background-image: linear-gradient(to right, #1d242a  , black);
     background-repeat: no-repeat;
-} */
+    background-color: transparent;
+    background-size: contain;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    color: whitesmoke
+}
+
+.lead {
+    float: right;
+}
+button {
+    margin-bottom: 10px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    background-image: linear-gradient(to right, #1d242a  , black);
+}
+
+body {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    background-image: url(/../assets/images/light-grey-terrazzo.png);
+}
