@@ -1,10 +1,11 @@
 .jumbotron {
-    background-image: linear-gradient(to right, #1d242a  , black);
+    background-image: linear-gradient(to right, #273751 , black);
     background-repeat: no-repeat;
     background-color: transparent;
     background-size: contain;
     font-family: 'Alegreya Sans SC', sans-serif;
-    color: whitesmoke
+    color: whitesmoke;
+   
 }
 
 .lead {
@@ -13,10 +14,20 @@
 button {
     margin-bottom: 10px;
     font-family: 'Alegreya Sans SC', sans-serif;
-    background-image: linear-gradient(to right, #1d242a  , black);
+    background-image: linear-gradient(to right, #273751  , black);
+    font-weight: bolder;
 }
 
 body {
     font-family: 'Alegreya Sans SC', sans-serif;
-    background-image: url(/../assets/images/light-grey-terrazzo.png);
+    background-image: url(../../assets/images/light-grey-terrazzo.png);
+}
+
+td {
+    font-weight: bolder; 
+    font-size: 20px;
+}
+
+.table {
+    font-size: 24px;
 }

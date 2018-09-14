@@ -43,7 +43,7 @@ if (frequency === null) {
     console.error("Enter Frequency");
     return;
 } else {
-    frequency = moment(frequency, "mm").format("mm");
+    frequency = moment(frequency, "mm:ss").format("mm:ss");
 };
 database.ref().push({
     name: name,
@@ -69,7 +69,7 @@ database.ref().on("child_added", function(snapshot) {
     console.log(firstTrain);
     console.log(freq);
     
-    $('#trains').append('<tr><td id="name">' + trainName + '</td><td id="dest">' 
+    $('#trains').append('<tr><td><i class="fas fa-subway"></i></td><td id="name">' + trainName + '</td><td id="dest">' 
     + trainDest + '</td><td id="firstTrain">' + firstTrain + '</td><td id="freq">'
     + freq + '</td><tr>')
     timeToNext();
@@ -84,6 +84,8 @@ database.ref().on("child_added", function(snapshot) {
 function timeToNext (){
     var time = moment().format("hh:mm");
     console.log("time ", time);
+
+    // this is coming back as an object
 
     var untilNext = moment(time).subtract(firstTrain);
     console.log("untilNext ", untilNext);
