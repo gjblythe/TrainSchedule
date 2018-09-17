@@ -20,6 +20,7 @@ $(document).ready(function() {
   }
 
   $("button").click(function(event) {
+    event.preventDefault();
     var name = $("#trainName")
       .val()
       .trim();
@@ -32,26 +33,27 @@ $(document).ready(function() {
     var frequency = $("#frequency")
       .val()
       .trim();
-
-    if (firstTrainTime === "") {
-      firstTrainTime = moment().format("hh:mm");
-    } else {
       firstTrainTime = moment(firstTrainTime, "hh:mm").format("hh:mm");
-    }
+      firstTrainTimeMoment = moment(firstTrainTime, "hh:mm").subtract(1, "years");
+      currentTime = moment();
+      diffTime = moment().diff(moment(firstTrainTimeMoment), "minutes");
+      timeRemaider = diffTime % frequency;
+      minutesToNext = frequency - timeRemaider;
+      nextTrain = moment().add(minutesToNext, "minutes");
+      nextTrainMoment = moment(nextTrain).format("hh:mm");
+        console.log(nextTrainMoment);
+    
 
-    if (frequency === null) {
-      console.error("Enter Frequency");
-      return;
-    } else {
-      frequency = moment(frequency, "mm:ss").format("mm:ss");
-    }
+    
     database.ref().push({
       name: name,
       destination: destination,
       firstTrainTime: firstTrainTime,
       frequency: frequency,
+      nextTrainMoment: nextTrainMoment,
       dateAdded: moment().format("X")
     });
+
     name = "";
     destination = "";
     firstTrainTime = "";
@@ -61,7 +63,7 @@ $(document).ready(function() {
     $("#destination").val(destination);
     $("#firstTrain").val(firstTrainTime);
     $("#frequency").val(frequency);
-    return false;
+   
   });
 
   database.ref().on("child_added", function(snapshot) {
@@ -69,7 +71,7 @@ $(document).ready(function() {
     trainName = snapshot.val().name;
     trainDest = snapshot.val().destination;
     firstTrain = snapshot.val().firstTrainTime;
-    freq = snapshot.val().frequency;
+    freq = snapshot.val().nextTrainMoment;
 
     console.log(trainName);
     console.log(trainDest);
