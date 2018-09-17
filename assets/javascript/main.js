@@ -94,26 +94,7 @@ $(document).ready(function() {
   // + trainDest + '</td><td id="firstTrain">' + firstTrain + '</td><td id="freq">'
   // + freq + '</td><tr>'))
 
-  function timeToNext() {
-    var time = moment.utc().format("X");
-
-    console.log("time ", time);
-
-    // this is coming back as an object
-
-    var untilNext = moment(time).subtract(firstTrain.UTC);
-    console.log("untilNext ", untilNext);
-
-    var modulus = untilNext % freq;
-    console.log("modulus ", modulus);
-
-    var remaider = freq - modulus;
-    console.log("remainder ", remainder);
-
-    var nextTrain = remaider + time;
-    console.log(nextTrain);
-    $("#next").text(nextTrain);
-  }
+ 
 
   // function removeTrain(){
   //     $('.fas fa-subway').click(function(){
